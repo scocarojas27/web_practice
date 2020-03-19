@@ -13,11 +13,11 @@ class PersonsService(object):
     def get_person_by_name(self, name):
     	return self.persons_repository.get_person_by_name(name)
 
-    def get_friends(self, name):
-        return self.persons_repository.get_friends(name)
+    def get_friends(self, personId):
+        return self.persons_repository.get_friends(personId)
     
-    def get_friends_from_my_friends(self, name):
-        return self.persons_repository.get_friends_from_my_friends(name)
+    def get_friends_from_my_friends(self, personId):
+        return self.persons_repository.get_friends_from_my_friends(personId)
 
     def add_new_relationship(self, personId1, personId2):
         return self.persons_repository.add_new_relationship(personId1, personId2)

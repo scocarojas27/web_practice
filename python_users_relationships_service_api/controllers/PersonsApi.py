@@ -37,10 +37,10 @@ def get_all_persons():
     except Exception as e:
         print(e)
 
-@persons_api.route('/persons/<string:name>/friends', methods=['GET'])
-def get_friends(name):
+@persons_api.route('/persons/<int:personId>/friends', methods=['GET'])
+def get_friends(personId):
     try:
-        row = persons_service.get_friends(name)
+        row = persons_service.get_friends(personId)
         resp = jsonify(row)
         resp.status_code = 200
         return resp
@@ -57,10 +57,10 @@ def get_person_by_name(name):
     except Exception as e:
         print(e)
 
-@persons_api.route('/persons/<string:name>/mayYouKnow', methods=['GET'])
-def get_friends_from_my_friends(name):
+@persons_api.route('/persons/<int:personId>/mayYouKnow', methods=['GET'])
+def get_friends_from_my_friends(personId):
     try:
-        row = persons_service.get_friends_from_my_friends(name)
+        row = persons_service.get_friends_from_my_friends(personId)
         resp = jsonify(row)
         resp.status_code = 200
         return resp

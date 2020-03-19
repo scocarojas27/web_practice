@@ -22,10 +22,7 @@ headers = {
     'Content-type': 'application/json'
 }
 
-#conn.request("GET", "/persons", headers=headers)
-#conn.request("GET", "/persons/Juan/1", headers=headers)
-#conn.request("GET", "/persons/Juan/2", headers=headers)
-#conn.request("GET", "/persons/Juan/3", headers=headers)
+#Create person
 
 # create_person_post = {
 #     'id': 4,
@@ -37,7 +34,19 @@ headers = {
 # json_data_post = json.dumps(create_person_post)
 # conn.request("POST", "/persons/", json_data_post, headers=headers)
 
+#Friends of a person
+
+#conn.request("GET", "/persons/1/friends", headers=headers)
+
+#Friends of the friends of a person
+
+#conn.request("GET", "/persons/0/mayYouKnow", headers=headers)
+
+#Add a new relationship
+
 #conn.request("POST", "/persons/person1/3/person2/4", headers=headers)
+
+#Delete a relationship
 
 conn.request("POST", "/persons/delete/person1/3/person2/4", headers=headers)
 

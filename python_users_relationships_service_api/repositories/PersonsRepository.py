@@ -19,14 +19,14 @@ class PersonsRepository(object):
             result = session.run("MATCH (n:Person{name:'" +name+ "'}) RETURN n.name as name, n.age as age").data()
             return result
 
-    def get_friends(self, name):
+    def get_friends(self, personId):
         with driver.session() as session:
-            result = session.run("MATCH (n:Person{name: '" +name+ "'})-[:FRIEND]->(fof) RETURN fof.age as age, fof.name as name").data()
+            result = session.run("MATCH (n:Person{id:$id})-[:FRIEND]->(fof) RETURN fof.name as name", id=int(personId)).data()
             return result
 
-    def get_friends_from_my_friends(self, name):
+    def get_friends_from_my_friends(self, personId):
         with driver.session() as session:
-            result = session.run("MATCH (n:Person{name:'" +name+ "'})-[:FRIEND]->(myFriends)-[:FRIEND]->(othersFriends) RETURN othersFriends.age as age, othersFriends.name as name").data()
+            result = session.run("MATCH (n:Person{id:$id})-[:FRIEND]->(myFriends)-[:FRIEND]->(othersFriends) RETURN othersFriends.name as name", id=int(personId)).data()
             return result
 
     def add_new_relationship(self, personId1, personId2):
